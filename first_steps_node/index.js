@@ -1,13 +1,13 @@
-const fs = require('fs');
+const express = require('express');
 
-fs.writeFile('/texto.txt','la primera linea con fs write',function(err){
-    if(err){
-        console.log(err);
-        
-    }else{
-        console.log("archivo creado");
-    }
-    
-});
+const server = express();
 
-console.log("ultima linea");
+server.get('/',(req,res)=>{
+    res.writeHead(200,{'content-type':'text/html'});
+    res.write("<h1> hola mundo con express y node </h1>");
+    res.end();
+})
+
+server.listen(3000,()=>{
+    console.log("servidor enel puerto 3000");
+})
